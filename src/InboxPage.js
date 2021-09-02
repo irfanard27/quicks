@@ -1,15 +1,14 @@
 import { Input, Spin, List, Card, Row, Col, Avatar, PageHeader } from 'antd'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   CloseOutlined
 } from '@ant-design/icons';
-import { parseDate } from "./helper"
 import { data_inbox } from './data';
 import { Button } from 'antd/lib/radio';
 
 export default function InboxPage() {
 
-  const [loading, setLoading] = useState(false)
+  const [loading] = useState(false)
   const [displayComment, setDisplayComment] = useState(false)
   const [comments, setComment] = useState([])
 
@@ -35,15 +34,15 @@ export default function InboxPage() {
               <List
                 dataSource={data_inbox}
                 renderItem={(list, i) => (
-                  <div className="list" onClick={() => showComment(i)}>
+                  <div className="list" onClick={() => showComment(i)} style={{ cursor: "pointer" }}>
                     <Row gutter={16}>
                       <Col span={2}>
                         <Avatar>U</Avatar>
                       </Col>
                       <Col span={16}>
-                        <a href="#">
+                        <span className="link">
                           {list.message}
-                        </a>
+                        </span>
                       </Col>
                       <Col span={6} style={{ textAlign: "right" }}>
                         <small>{list.date}</small>
@@ -58,7 +57,7 @@ export default function InboxPage() {
             <PageHeader
               onBack={closeComment}
               extra={<CloseOutlined />}
-              subTitle={<><a>{comments.message}</a></>} style={{ padding: 0 }} className="border-bottom" />
+              subTitle={<><span className="link">{comments.message}</span></>} style={{ padding: 0 }} className="border-bottom" />
             <List
               dataSource={comments.comments}
               renderItem={date => (
