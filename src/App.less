@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@import "~antd/dist/antd.less";
+
+@primary-color: #1890ff; // primary color for all components
+@link-color: #1890ff; // link color
+@success-color: #52c41a; // success state color
+@warning-color: #faad14; // warning state color
+@error-color: #f5222d; // error state color
+@font-size-base: 14px; // major text font size
+@heading-color: rgba(0, 0, 0, 0.85); // heading text color
+@text-color: rgba(0, 0, 0, 0.65); // major text color
+@text-color-secondary: rgba(0, 0, 0, 0.45); // secondary text color
+@disabled-color: rgba(0, 0, 0, 0.25); // disable state color
+@border-radius-base: 5px; // major border radius
+@border-color-base: #d9d9d9; // major border color
+@box-shadow-base: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+  0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05); // major shadow for layers
+
+html,
+body {
+  font-family: "DM Sans";
+}
+
+.site-layout-background {
+  background-color: #001529;
+  color: #fff;
+}
+
+.header-background {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.button-bottom {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.panel {
+  height: 450px;
+  width: 550px;
+  overflow-y: auto;
+}
+
+.list {
+  margin-bottom: 10px;
+  border-bottom: rgba(0, 0, 0, 0.05);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: 15px;
+}
+
+.text-primary {
+  color: #1890ff;
+}
+
+.text-danger {
+  color: #7c7c7c;
+  font-size: 12px;
+}
+
+.done-task {
+  text-decoration: line-through;
+}
+
+.chat {
+  background-color: #faad1418;
+  padding: 10px;
+  width: 400px;
+  border-radius: @border-radius-base;
+  margin-bottom: 10px;
+  float: left;
+}
+
+.chat-me {
+  background-color: #9214fa18;
+  padding: 10px;
+  width: 400px;
+  border-radius: @border-radius-base;
+  margin-bottom: 10px;
+  float: right;
+  text-align: right;
+}
+
+.border-bottom {
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  border-bottom: rgba(0, 0, 0, 0.05);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: 15px;
+}
+
+.message-input {
+  background-color: #fff;
+  padding-top: 10px;
+  position: fixed;
+  bottom: 100px;
+  width: 515px;
+}
