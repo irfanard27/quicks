@@ -105,6 +105,7 @@ body {
 
 .pop-up-button-active {
   display: inline;
+  z-index: 10;
 }
 
 .pop-up-button-inactive {
@@ -133,4 +134,17 @@ body {
   background-color: #8785ff !important;
   color: #fff !important;
   border: solid 1px #8785ff !important;
+}
+
+.inactive-open-button {
+  position: absolute;
+  z-index: 0;
+  display: inline;
+  bottom: 0px;
+  right: 15px;
+}
+
+.inactive-button {
+  background: #f0f0f038;
+  border: solid 1px #f0f0f005 !important;
 }

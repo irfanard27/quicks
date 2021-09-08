@@ -18,7 +18,11 @@ function App() {
   const openPage = (page) => {
     openPanelState(page)
     if (page === "task") {
-      setReverse({ display: "flex", flexDirection: "row-reverse" })
+      setReverse({
+        display: "flex",
+        flexDirection: "row-reverse",
+        width: 200
+      })
     } else {
       setReverse(null)
     }
@@ -42,13 +46,22 @@ function App() {
     }
   }
 
+  const resetAllButton = (e) => {
+    if (e.target.className === 'ant-layout-content site-layout-background') {
+      setOpenPanel(false)
+      setOpenedPage(null)
+      setButtonState(false)
+    }
+
+  }
+
   return (
     <>
       <Layout style={{ minHeight: "100vh" }}>
         <Sider>
 
         </Sider>
-        <Layout className="site-layout-background">
+        <Layout className="site-layout-background" onClick={resetAllButton}>
           <Header className="header-background" style={{ padding: 0 }}>
           </Header>
           <Content
@@ -66,40 +79,7 @@ function App() {
               </div>
               : ""
             }
-            <div style={{ float: "right" }}>
-              <div
-                style={{ float: "left" }}
-                className={buttonState === true ? "pop-up-button-active" : "pop-up-button-inactive"}>
-                <div style={reverse}>
-                  <div style={{ textAlign: "center", float: "left" }}>
-                    <small>Task</small><br />
-                    <Button
-                      type="button"
-                      shape="circle"
-                      size="large"
-                      icon={<ChromeReaderModeOutlined style={{ marginTop: 5 }} />}
-                      autoFocus={false}
-                      style={{ margin: "0px 5px" }}
-                      onClick={() => openPage("task")}
-                      className={openedPage === "task" ? "button task task-active" : "button task"}
-                    />
-                  </div>
-                  <div style={{ textAlign: "center", float: "left" }}>
-                    <small>Inbox</small><br />
-                    <Button
-                      type="default"
-                      htmlType="button"
-                      shape="circle"
-                      size="large"
-                      style={{ margin: "0px 5px" }}
-                      icon={<QuestionAnswerOutlined style={{ marginTop: 5 }} />}
-                      onClick={() => openPage("inbox")}
-                      className={openedPage === "inbox" ? "button inbox inbox-active" : "button inbox"}
-                    />
-                  </div>
-                </div>
-              </div>
-
+            {openPanel === false ?
               <div style={{ float: "right", paddingLeft: 10, paddingTo: 50 }}>
                 <div>
                   <br />
@@ -108,7 +88,46 @@ function App() {
                     type="primary"
                     size="large"
                     onClick={openButton}
-                  ><img src={Shape} width="auto" height={20} style={{ marginTop: -5 }} /></Button>
+                  ><img src={Shape} width="auto" height={20} style={{ marginTop: -5 }} alt="icon" /></Button>
+                </div>
+              </div> :
+              <div className="inactive-open-button">
+                <Button shape="circle" size="large" className="inactive-button">
+                  <img src={Shape} width="auto" height={20} style={{ marginTop: -5 }} alt="icon" />
+                </Button>
+              </div>}
+
+            <div style={{ float: "right" }}>
+              <div
+                style={{ float: "left", zIndex: 10 }}
+                className={buttonState === true ? "pop-up-button-active" : "pop-up-button-inactive"}>
+                <div style={reverse}>
+                  <div style={{ textAlign: "center", float: "left" }}>
+                    {openPanel === false ? <small>Task</small> : ""}<br />
+                    <Button
+                      type="button"
+                      shape="circle"
+                      size="large"
+                      icon={<ChromeReaderModeOutlined style={{ marginTop: 5 }} />}
+                      autoFocus={false}
+                      style={{ margin: "0px 7px" }}
+                      onClick={() => openPage("task")}
+                      className={openedPage === "task" ? "button task task-active" : "button task"}
+                    />
+                  </div>
+                  <div style={{ textAlign: "center", float: "left" }}>
+                    {openPanel === false ? <small>Inbox</small> : ""}<br />
+                    <Button
+                      type="default"
+                      htmlType="button"
+                      shape="circle"
+                      size="large"
+                      style={{ margin: "0px 7px" }}
+                      icon={<QuestionAnswerOutlined style={{ marginTop: 5 }} />}
+                      onClick={() => openPage("inbox")}
+                      className={openedPage === "inbox" ? "button inbox inbox-active" : "button inbox"}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
